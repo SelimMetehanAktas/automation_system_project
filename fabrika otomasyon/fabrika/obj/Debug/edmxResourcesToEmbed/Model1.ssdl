@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FabrikaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Faaliyet">
+    <Key>
+      <PropertyRef Name="faaliyet_id" />
+    </Key>
+    <Property Name="faaliyet_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="makine_id" Type="tinyint" />
+    <Property Name="tekniker_id" Type="tinyint" />
+    <Property Name="operator_id" Type="tinyint" />
+    <Property Name="durum_id" Type="tinyint" />
+    <Property Name="calisma_sure" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Fabrika.dbo.Kullanici' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="kullanıcı_adi" />
+      <PropertyRef Name="sifre" />
+      <PropertyRef Name="yetki" />
+    </Key>
+    <Property Name="kullanıcı_adi" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="sifre" Type="nchar" MaxLength="16" Nullable="false" />
+    <Property Name="yetki" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lastik">
+    <Key>
+      <PropertyRef Name="lastik_id" />
+    </Key>
+    <Property Name="lastik_id" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="lastik_turu" Type="nvarchar" MaxLength="50" />
+    <Property Name="lastik_ebat" Type="nvarchar" MaxLength="50" />
+    <Property Name="yuk_endeksi" Type="nvarchar" MaxLength="50" />
+    <Property Name="arac_turu" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="MakineDurum">
+    <Key>
+      <PropertyRef Name="durum_id" />
+    </Key>
+    <Property Name="durum_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="durum_adi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Makineler">
+    <Key>
+      <PropertyRef Name="makine_id" />
+    </Key>
+    <Property Name="makine_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="makine_adi" Type="nvarchar" MaxLength="50" />
+    <Property Name="makine_turu" Type="nvarchar" MaxLength="50" />
+    <Property Name="uretim_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Operator">
+    <Key>
+      <PropertyRef Name="operator_id" />
+    </Key>
+    <Property Name="operator_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="operator_adi" Type="nvarchar" MaxLength="50" />
+    <Property Name="operator_soyadi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Tekniker">
+    <Key>
+      <PropertyRef Name="tekniker_id" />
+    </Key>
+    <Property Name="tekniker_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tekniker_adi" Type="nvarchar" MaxLength="50" />
+    <Property Name="tekniker_soyadi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Uretim">
+    <Key>
+      <PropertyRef Name="uretim_id" />
+    </Key>
+    <Property Name="uretim_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lastik_id" Type="nchar" MaxLength="20" />
+    <Property Name="uretim_adet" Type="int" />
+  </EntityType>
+  <Association Name="FK_Faaliyet_MakineDurum">
+    <End Role="MakineDurum" Type="Self.MakineDurum" Multiplicity="0..1" />
+    <End Role="Faaliyet" Type="Self.Faaliyet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MakineDurum">
+        <PropertyRef Name="durum_id" />
+      </Principal>
+      <Dependent Role="Faaliyet">
+        <PropertyRef Name="durum_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Faaliyet_Makineler">
+    <End Role="Makineler" Type="Self.Makineler" Multiplicity="0..1" />
+    <End Role="Faaliyet" Type="Self.Faaliyet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Makineler">
+        <PropertyRef Name="makine_id" />
+      </Principal>
+      <Dependent Role="Faaliyet">
+        <PropertyRef Name="makine_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Faaliyet_Operator">
+    <End Role="Operator" Type="Self.Operator" Multiplicity="0..1" />
+    <End Role="Faaliyet" Type="Self.Faaliyet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operator">
+        <PropertyRef Name="operator_id" />
+      </Principal>
+      <Dependent Role="Faaliyet">
+        <PropertyRef Name="operator_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Faaliyet_Tekniker">
+    <End Role="Tekniker" Type="Self.Tekniker" Multiplicity="0..1" />
+    <End Role="Faaliyet" Type="Self.Faaliyet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tekniker">
+        <PropertyRef Name="tekniker_id" />
+      </Principal>
+      <Dependent Role="Faaliyet">
+        <PropertyRef Name="tekniker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Makineler_Uretim">
+    <End Role="Uretim" Type="Self.Uretim" Multiplicity="0..1" />
+    <End Role="Makineler" Type="Self.Makineler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uretim">
+        <PropertyRef Name="uretim_id" />
+      </Principal>
+      <Dependent Role="Makineler">
+        <PropertyRef Name="uretim_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uretim_Lastik">
+    <End Role="Lastik" Type="Self.Lastik" Multiplicity="0..1" />
+    <End Role="Uretim" Type="Self.Uretim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lastik">
+        <PropertyRef Name="lastik_id" />
+      </Principal>
+      <Dependent Role="Uretim">
+        <PropertyRef Name="lastik_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FabrikaModelStoreContainer">
+    <EntitySet Name="Faaliyet" EntityType="Self.Faaliyet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lastik" EntityType="Self.Lastik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MakineDurum" EntityType="Self.MakineDurum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Makineler" EntityType="Self.Makineler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operator" EntityType="Self.Operator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tekniker" EntityType="Self.Tekniker" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Uretim" EntityType="Self.Uretim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanici" EntityType="Self.Kullanici" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Kullanici].[kullanıcı_adi] AS [kullanıcı_adi], 
+    [Kullanici].[sifre] AS [sifre], 
+    [Kullanici].[yetki] AS [yetki]
+    FROM [dbo].[Kullanici] AS [Kullanici]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Faaliyet_MakineDurum" Association="Self.FK_Faaliyet_MakineDurum">
+      <End Role="MakineDurum" EntitySet="MakineDurum" />
+      <End Role="Faaliyet" EntitySet="Faaliyet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Faaliyet_Makineler" Association="Self.FK_Faaliyet_Makineler">
+      <End Role="Makineler" EntitySet="Makineler" />
+      <End Role="Faaliyet" EntitySet="Faaliyet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Faaliyet_Operator" Association="Self.FK_Faaliyet_Operator">
+      <End Role="Operator" EntitySet="Operator" />
+      <End Role="Faaliyet" EntitySet="Faaliyet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Faaliyet_Tekniker" Association="Self.FK_Faaliyet_Tekniker">
+      <End Role="Tekniker" EntitySet="Tekniker" />
+      <End Role="Faaliyet" EntitySet="Faaliyet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Makineler_Uretim" Association="Self.FK_Makineler_Uretim">
+      <End Role="Uretim" EntitySet="Uretim" />
+      <End Role="Makineler" EntitySet="Makineler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uretim_Lastik" Association="Self.FK_Uretim_Lastik">
+      <End Role="Lastik" EntitySet="Lastik" />
+      <End Role="Uretim" EntitySet="Uretim" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

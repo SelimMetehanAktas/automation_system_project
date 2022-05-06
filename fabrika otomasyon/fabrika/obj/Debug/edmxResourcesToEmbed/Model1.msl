@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FabrikaModelStoreContainer" CdmEntityContainer="FabrikaEntities">
+    <EntitySetMapping Name="Faaliyet">
+      <EntityTypeMapping TypeName="FabrikaModel.Faaliyet">
+        <MappingFragment StoreEntitySet="Faaliyet">
+          <ScalarProperty Name="faaliyet_id" ColumnName="faaliyet_id" />
+          <ScalarProperty Name="makine_id" ColumnName="makine_id" />
+          <ScalarProperty Name="tekniker_id" ColumnName="tekniker_id" />
+          <ScalarProperty Name="operator_id" ColumnName="operator_id" />
+          <ScalarProperty Name="durum_id" ColumnName="durum_id" />
+          <ScalarProperty Name="calisma_sure" ColumnName="calisma_sure" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lastik">
+      <EntityTypeMapping TypeName="FabrikaModel.Lastik">
+        <MappingFragment StoreEntitySet="Lastik">
+          <ScalarProperty Name="lastik_id" ColumnName="lastik_id" />
+          <ScalarProperty Name="lastik_turu" ColumnName="lastik_turu" />
+          <ScalarProperty Name="lastik_ebat" ColumnName="lastik_ebat" />
+          <ScalarProperty Name="yuk_endeksi" ColumnName="yuk_endeksi" />
+          <ScalarProperty Name="arac_turu" ColumnName="arac_turu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MakineDurum">
+      <EntityTypeMapping TypeName="FabrikaModel.MakineDurum">
+        <MappingFragment StoreEntitySet="MakineDurum">
+          <ScalarProperty Name="durum_id" ColumnName="durum_id" />
+          <ScalarProperty Name="durum_adi" ColumnName="durum_adi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Makineler">
+      <EntityTypeMapping TypeName="FabrikaModel.Makineler">
+        <MappingFragment StoreEntitySet="Makineler">
+          <ScalarProperty Name="makine_id" ColumnName="makine_id" />
+          <ScalarProperty Name="makine_adi" ColumnName="makine_adi" />
+          <ScalarProperty Name="makine_turu" ColumnName="makine_turu" />
+          <ScalarProperty Name="uretim_id" ColumnName="uretim_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operator">
+      <EntityTypeMapping TypeName="FabrikaModel.Operator">
+        <MappingFragment StoreEntitySet="Operator">
+          <ScalarProperty Name="operator_id" ColumnName="operator_id" />
+          <ScalarProperty Name="operator_adi" ColumnName="operator_adi" />
+          <ScalarProperty Name="operator_soyadi" ColumnName="operator_soyadi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tekniker">
+      <EntityTypeMapping TypeName="FabrikaModel.Tekniker">
+        <MappingFragment StoreEntitySet="Tekniker">
+          <ScalarProperty Name="tekniker_id" ColumnName="tekniker_id" />
+          <ScalarProperty Name="tekniker_adi" ColumnName="tekniker_adi" />
+          <ScalarProperty Name="tekniker_soyadi" ColumnName="tekniker_soyadi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uretim">
+      <EntityTypeMapping TypeName="FabrikaModel.Uretim">
+        <MappingFragment StoreEntitySet="Uretim">
+          <ScalarProperty Name="uretim_id" ColumnName="uretim_id" />
+          <ScalarProperty Name="lastik_id" ColumnName="lastik_id" />
+          <ScalarProperty Name="uretim_adet" ColumnName="uretim_adet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanici">
+      <EntityTypeMapping TypeName="FabrikaModel.Kullanici">
+        <MappingFragment StoreEntitySet="Kullanici">
+          <ScalarProperty Name="kullanıcı_adi" ColumnName="kullanıcı_adi" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="yetki" ColumnName="yetki" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
