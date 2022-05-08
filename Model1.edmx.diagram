@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e5868647b47e42e99482b4f4022190f2" Name="Diagram1">
+        <EntityTypeShape EntityType="FabrikaModel.Ariza" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabrikaModel.Faaliyet" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabrikaModel.Lastik" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabrikaModel.MakineDurum" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabrikaModel.Makineler" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabrikaModel.Operator" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabrikaModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabrikaModel.Tekniker" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabrikaModel.Uretim" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabrikaModel.Kullanici" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="FabrikaModel.FK_Faaliyet_Ariza" ManuallyRouted="false" />
+        <AssociationConnector Association="FabrikaModel.FK_Faaliyet_MakineDurum" ManuallyRouted="false" />
+        <AssociationConnector Association="FabrikaModel.FK_Faaliyet_Makineler" ManuallyRouted="false" />
+        <AssociationConnector Association="FabrikaModel.FK_Faaliyet_Operator" ManuallyRouted="false" />
+        <AssociationConnector Association="FabrikaModel.FK_Faaliyet_Tekniker" ManuallyRouted="false" />
+        <AssociationConnector Association="FabrikaModel.FK_Uretim_Lastik" ManuallyRouted="false" />
+        <AssociationConnector Association="FabrikaModel.FK_Makineler_Uretim" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
